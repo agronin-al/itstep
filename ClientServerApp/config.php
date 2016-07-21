@@ -1,4 +1,4 @@
 <?php
-$ip = "0.0.0.0";
+$server_ip = "127.0.0.1";
 $port = 1234;
 $proto = "tcp";
