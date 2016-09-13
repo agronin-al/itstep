@@ -41,12 +41,12 @@ function __destruct(){
 }
 
 
-class hands
+class hand
 {
-    var $fingers_count = 10;
-    var $isHair = false;
-    function shaper($object){
-
+    var $fingers = 5;
+    function __ser($name, $value){
+        echo "Cdjqcndj {$name}";
     }
 
 }
+

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
+    <script>
+        window.onload = function()
+        {
+        $.ajax({
+            url: "rez.php",
+            context: document.body,
+            statusCode: {
+                404: function() {
+                    alert( "page not found" );
+                }
+            }
+        }).done(function() {
+            $( "#ajax" ).addClass( "done" );
+            $('#ok').submit(
+                    function(event){
+                        $.ajax ({
+                            url: "rez.php",
+                            type: "POST",
+                            dataType: 'json',
+                            data: "text=" + $('#text').val(),
+                            success: function(data){
+                                if (data.number > 5 ){
+                                    $('#body').append("<p>" + data.text + "</p>")
+                                }
+                                else {
+                                    $('#body').append("<h1>" + data.text + "</h1>")
+                                }
+                            }
+                        });
+                        event.preventDefault();
+                    }
+            )
+        });
+        }
+    </script>
+</head>
+<body>
+<form action="" id="ok" >
+    <input type="text" id="text">
+    <input type="submit">
+
+</form>
+<div id="body"></div>
+</body>
+</html>
